@@ -6,3 +6,4 @@ node {
     openshiftVerifyDeployment depCfg: 'nodejs-ex',
       namespace: 'pruebas'
   }
+}
