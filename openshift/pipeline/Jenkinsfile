@@ -1,6 +1,8 @@
-node('nodejs') {
-  stage 'build'
-  openshiftBuild(buildConfig: 'nodejs-ex', showBuildLogs: 'true')
-  stage 'deploy'
-  openshiftDeploy(deploymentConfig: 'nodejs-ex')
-}
+node {
+  stage('build & deploy') {
+    openshiftBuild bldCfg: 'nodejs-ex',
+      namespace: 'pruebas',
+      showBuildLogs: 'true'
+    openshiftVerifyDeployment depCfg: 'nodejs-ex',
+      namespace: 'pruebas'
+  }
